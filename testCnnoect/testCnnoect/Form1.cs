@@ -37,7 +37,7 @@ namespace testCnnoect
                 }
             }
             catch (Exception ex)
-            { }
+            {}
         }
 
         private bool testConn(ref string Msg)
