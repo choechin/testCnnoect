@@ -21,18 +21,23 @@ namespace testCnnoect
         private void btn_test_Click(object sender, EventArgs e)
         {
             string Msg = string.Empty;
-            bool blConn=testConn(ref Msg);
-            lbl_light.Visible = true;
-            if (blConn)
+            try
             {
-                lbl_light.ForeColor = Color.Green;
-                MessageBox.Show("連線成功");
+                bool blConn = testConn(ref Msg);
+                lbl_light.Visible = true;
+                if (blConn)
+                {
+                    lbl_light.ForeColor = Color.Green;
+                    MessageBox.Show("連線成功");
+                }
+                else
+                {
+                    lbl_light.ForeColor = Color.Red;
+                    MessageBox.Show("連線失敗 : \r\n " + Msg);
+                }
             }
-            else
-            {
-                lbl_light.ForeColor = Color.Red;
-                MessageBox.Show("連線失敗 : \r\n "+ Msg);
-            }
+            catch (Exception ex)
+            { }
         }
 
         private bool testConn(ref string Msg)
